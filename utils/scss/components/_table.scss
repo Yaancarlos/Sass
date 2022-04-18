@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+    td {
+        padding: 1rem;
+        border-left: 1px solid #000;
+        border-right: 1px solid #000;
+    }
+}
+
+@for $row from 1 through 14 {
+    tbody tr:nth-child(#{$row}) {
+        background: linear-gradient(to bottom, lighten(rgb(59 59 194), ($row - 1) * 5%), lighten(rgb(59 59 194), $row * 5%));
+    }
+} 

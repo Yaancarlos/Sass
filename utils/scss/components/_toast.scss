@@ -1,0 +1,111 @@
+$colors: 
+    'success' $success,
+    'danger' $third
+;
+
+$positions :
+    'left' 'top',
+    'left' 'bottom',
+    'right' 'top',
+    'rigth' 'bottom'
+;
+
+.relative-position {
+    position: relative;
+}
+
+.toast {
+    width: 300px;
+    background-color: #fff;
+    border: none;
+    padding: 1rem;
+    position: relative;
+    border-radius: .25rem;
+    display: flex;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.231);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    &__close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: #000;
+        &:hover {
+            opacity: .75;
+            cursor: pointer;
+        }
+    }
+    &__img {
+        width: 100px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &__inf {
+        transform: translateX(100px);
+    }
+    &__title {
+        font-weight: bold;
+        font-size: 1rem
+    }
+    &__description {
+        font-size: 15px;
+        line-height: 2;
+        margin-bottom: 12px;
+    }
+    &__btn {
+        position: absolute;
+        bottom: .5rem;
+        right: .5rem;
+        border: none;
+        border-radius: .25rem;
+        height: 20px;
+        padding: 0 1rem;
+        color: #fff;
+        background-color: #000;
+        font-weight: 600;
+        outline: none;
+        &:hover {
+            opacity: .75;
+            cursor: pointer;
+        }
+    }
+
+    &-simple {
+        .toast-inf {
+            transform: translateX(-110px);
+        }
+    }
+
+    @each $x, $y in $positions {
+        &-#{$x}-#{$y}, &-#{$y}-#{$x} {
+            position: fixed;
+            margin-bottom: 0;
+            @if $x == 'left' {
+                left: 1rem;
+            } @else {
+                right: 1rem;
+            }
+            @if $y == 'top' {
+                top: 1rem;
+            } @else {
+                bottom: 1rem;
+            }
+        }
+    }
+}
+
+@each $name, $color in $colors {
+    .toast-#{$name} {
+        background-color: $color;
+        color: #fff;
+        .toast__close {
+            color: #fff;
+        }
+        .toast__btn{
+            color: $color;
+            background-color: #fff;
+        }
+    }
+}

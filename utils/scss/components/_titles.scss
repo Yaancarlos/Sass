@@ -1,0 +1,49 @@
+
+.#{$source}-title-primary {
+    color: $secondary;
+    font-size: $fz-3;
+}
+
+.#{$source}-title-secondary {
+    color: $secondary;
+    font: {
+        family: $font-family-roboto;
+        size: $fz-3;
+        weight: bold;
+        family: Arial;
+        style: italic;
+    }
+}
+
+.#{$source}-title-third {
+    color: $third;
+    font: {
+        family: $font-family-roboto;
+        size: $fz-3;
+    }
+}
+
+.#{$source}-title-fourth {
+    color: $light-opacity;
+    font-size: $fz-3;
+    padding: {
+        top: 10px;
+        left: 50px;
+        right: 8px;
+    }
+}
+
+@each $name, $size, $fw in $titles {
+    .title-#{$name}{
+        font: {
+            size: $size * 1px;
+            weight: $fw;
+        }
+    }
+}
+
+@for $pixels from 1 to 6 {
+    .pixel-item:nth-child(#{$pixels}) {
+        font-size: 10px * $pixels;
+    }
+}

@@ -1,0 +1,50 @@
+.show-list-position{
+    position: fixed;
+    right: 2rem;
+    border: 1px solid #000;
+    background-color: #212529;
+    padding: .1rem;
+    .show-list {
+        color: #fff !important;
+    }
+    
+    .bi-list {
+        font-size: 25px;
+        &::before{
+            vertical-align: -0.155em;
+        }
+    }
+    &:hover~.menu {
+        left: 0;
+    }
+}
+
+
+.menu {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: -50vw;
+    width: 50vw;
+    padding: 1rem 0;
+    background-color: $violet;
+    z-index: 1000; 
+    .list-style {
+        list-style: none;
+    }
+    .list-item {
+        margin: 1rem 0;
+    }  
+    .link-item {
+        color: #fff;
+        text-decoration: none;
+    }
+    transition: left .3s;
+}
+
+@media (min-width:600px) {
+    .menu {
+        left: -20vw;
+        width: 20vw;
+    }
+}

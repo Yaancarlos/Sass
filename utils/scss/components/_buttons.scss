@@ -1,0 +1,101 @@
+/* $colors:'primary' $secondary, 'success' $success, 'danger' $third, 'dark' $secondary, 'blue' #0275db, 'violet' $violet, 'orange' orange;
+ */
+%btn {
+    padding: {
+        top: .5rem;
+        bottom: .5rem;
+        right: 1rem;
+        left: 1rem;
+    }
+    min-width: 100px;
+    border: {
+        radius: .25rem;
+    }
+    font : {
+        size: 1.2rem;
+        family: $font-family-roboto;
+        weight: bold;
+    }
+    margin: .5rem 1rem;
+    background-color: #fff;
+    letter-spacing: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px $light-opacity;
+    transition: background .3s, color .3s;
+}
+
+@mixin button ($name, $color) {
+    /* .#{$source}-btn-#{$name} */
+    //this would be another way, but the include must be outside the main class
+    &#{$name} {
+        color: $color;
+        border: {
+            style: solid;
+            width: 1px;
+            color: $color;
+        }
+        &:hover {
+            background-color: $color;
+            color: #fff;
+        }
+    }
+}
+
+//main class below
+
+.#{$source}-btn-{
+    &primary, &danger, &success, &dark, &blue, &violet, &orange {
+        @extend %btn;
+    }
+
+    @each $name, $color in $papelette {
+        @include button( $name, $color);
+    }
+
+    //normal way
+
+    /*&primary {
+        border: {
+            style: solid;
+            width: 1px;
+            color: $secondary
+        }
+        &:hover {
+            background-color: $secondary;
+            color: #fff;
+        }
+    }
+
+    &danger {
+        color: $third;
+        border: {
+            style: solid;
+            width: 1px;
+            color: $third;
+        }
+        &:hover {
+            background-color: $third;
+            color: #fff;
+        }
+    }
+    &success {
+        color: $success;
+        border: {
+            style: solid;
+            width: 1px;
+            color: $success;
+        }
+        &:hover {
+            background-color: $success;
+            color: #fff;
+        }
+    }*/
+}
+
+
+//im compiling the code above into the below code
+
+
+/* @include button('primary', $secondary);
+@include button('success', $success);
+@include button('danger', $third); */
